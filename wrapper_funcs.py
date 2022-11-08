@@ -1,3 +1,6 @@
+from constants import *
+
+
 def PRINT_MENU():
     print("What do You want to do?")
     print("1: Update A Patient Record")

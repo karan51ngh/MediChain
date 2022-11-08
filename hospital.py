@@ -1,5 +1,6 @@
 import socket
 from constants import *
+from wrapper_funcs import *
 
 SERVER = socket.gethostbyname(socket.gethostname())
 ADDR = (SERVER, PORT)
@@ -17,7 +18,6 @@ def recieve():
 
 
 while True:
-
     ch = PRINT_MENU()
 
     if ch == 1:
