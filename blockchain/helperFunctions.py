@@ -17,11 +17,3 @@ def update_patient_record(idx, fn, ln, age, ts, phv, prf):
               (idx, fn, ln, age, ts, phv, prf))
     conn.commit()
     conn.close()
-
-
-# update_patient_record('Fred', 'Nietzsche', 65)
-print(get_patient_list())
-listt = get_patient_list()
-
-for i in listt:
-    print(i)
