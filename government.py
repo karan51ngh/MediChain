@@ -1,6 +1,7 @@
 import socket
 import threading
 from constants import *
+from wrapper_funcs import *
 
 SERVER = socket.gethostbyname(socket.gethostname())
 ADDR = (SERVER, PORT)
