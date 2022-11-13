@@ -41,16 +41,39 @@ def handle_client(conn, addr):
 
             x = chooseRandomNodeForVerification(
                 Hospitals_Sockets, (conn, addr))
+
             print(f"Hospital CHOSEN for VERIFICATION is {x[1]}\n")
+
+            (x[0]).send(VERIFICATION_POS.encode(FORMAT))
+            block_data['fn'] = fn
+            block_data['ln'] = ln
+            block_data['age'] = age
+            conn_data[x[0]] = block_data
 
         if msg == DISCONNECT_MESSAGE:
             DISCONNECT_MESSAGE_REPLY(conn, addr)
             connected = False
 
+        if msg == PUSH_CHANGE_TO_BLOCKCHAIN:
+            print(f"{addr}: Pushing change to Blockchain")
+            print(
+                f"data about to add: {conn_data[conn]['fn']}, {conn_data[conn]['ln']}...")
+        if msg == DONT_PUSH_CHANGE_TO_BLOCKCHAIN:
+            print(
+                f"{addr}: CANNOT PUSH CHANGES TO BLOCKCHAIN since the documents are not in order.\n Dequing the Request")
+            del conn_data[conn]
+            print("REMOVED")
+
     conn.close()
 
 
 Hospitals_Sockets = []  # to store all the connections in the array
+
+
+# dictionary to store block details, copy of it used to send to conn_data
+block_data = dict()
+
+conn_data = dict()  # GLobal dictionary to store all the blocks that need to be varified, key == the client hospital used for verification
 
 
 def start():

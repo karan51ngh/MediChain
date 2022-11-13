@@ -4,7 +4,8 @@ from constants import *
 def PRINT_MENU():
     print("What do You want to do?")
     print("1: Update A Patient Record")
-    print("2: Disconnect from the Network\n")
+    print("2: Disconnect from the Network")
+    print("3: IDLE\n")
     ch = int(input())
     return ch
 
@@ -30,9 +31,9 @@ def RECIEVE_PATIENT_DETAILS(conn, addr):
 
 def SEND_PATIENT_DETAILS(client):
     print("Requesting Patient Documents")
-    fn = input("Enter the First Name of the Patient:")
+    fn = input("Enter the First Name of the Patient: ")
     client.send(fn.encode(FORMAT))
-    ln = input("Enter the Last Name of the Patient:")
+    ln = input("Enter the Last Name of the Patient: ")
     client.send(ln.encode(FORMAT))
-    age = input("Enter the Age of the Patient:")
+    age = input("Enter the Age of the Patient: ")
     client.send(age.encode(FORMAT))
