@@ -5,16 +5,21 @@ from wrapper_funcs import *
 SERVER = socket.gethostbyname(socket.gethostname())
 ADDR = (SERVER, PORT)
 
-client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-client.connect(ADDR)
+# initializing a hospital socket
+hosptl = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+hosptl.connect(ADDR)  # connecting to the government node
+
+# Send Message to the Government Node.
 
 
 def send(msg):
-    client.send(msg.encode(FORMAT))
+    hosptl.send(msg.encode(FORMAT))
+
+# Recieve Message from the Government Node.
 
 
 def recieve():
-    return client.recv(HEADER).decode(FORMAT)
+    return hosptl.recv(HEADER).decode(FORMAT)
 
 
 while True:
@@ -23,7 +28,7 @@ while True:
     if ch == 1:
         send(RECORD_UPDATE_REQUEST)
         if recieve() == INITIATE_MESSAGE:
-            SEND_PATIENT_DETAILS(client)
+            SEND_PATIENT_DETAILS(hosptl)
 
     if ch == 2:
         send(DISCONNECT_MESSAGE)

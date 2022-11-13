@@ -10,18 +10,18 @@ def PRINT_MENU():
 
 
 def DISCONNECT_MESSAGE_REPLY(conn, addr):
-    print(f"[{addr}] Has Been Disconnected")
+    print(f"{addr} Has Been Disconnected")
     conn.send(
         f"You are DISCONNECTED from the NETWORK\n".encode(FORMAT))
 
 
 def ASK_PATIENT_DETAILS(conn, addr):
-    print(f"[{addr}] wants to add a Patient Record\n")
+    print(f"{addr} wants to add a Patient Record\n")
     conn.send(INITIATE_MESSAGE.encode(FORMAT))
 
 
 def RECIEVE_PATIENT_DETAILS(conn, addr):
-    print(f"[{addr}] Sending Patient Details\n")
+    print(f"Waiting for the Patient Details\n")
     fn = conn.recv(HEADER).decode(FORMAT)
     ln = conn.recv(HEADER).decode(FORMAT)
     age = conn.recv(HEADER).decode(FORMAT)
