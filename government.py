@@ -26,12 +26,14 @@ def recieve(conn):
 
 
 def handle_client(conn, addr):
+    global fn, ln, age, x
     print(f"NEW CONNECTION: {addr} connected\n.")
 
     connected = True
     while connected:
         msg = recieve(conn)
         if msg == RECORD_UPDATE_REQUEST:
+
             ASK_PATIENT_DETAILS(conn, addr)
             fn, ln, age = RECIEVE_PATIENT_DETAILS(conn, addr)
             print(
@@ -55,9 +57,20 @@ def handle_client(conn, addr):
             connected = False
 
         if msg == PUSH_CHANGE_TO_BLOCKCHAIN:
+
             print(f"{addr}: Pushing change to Blockchain")
             print(
                 f"data about to add: {conn_data[conn]['fn']}, {conn_data[conn]['ln']}...")
+            print(x[1])
+            conn.send(BLOCKCHAIN_PUSH.encode(FORMAT))
+            print("sending fn")
+            conn.send(conn_data[conn]['fn'].encode(FORMAT))
+            print("sending ln")
+            conn.send(conn_data[conn]['ln'].encode(FORMAT))
+            print("sending age")
+            conn.send(conn_data[conn]['age'].encode(FORMAT))
+            print("data sent for addition")
+
         if msg == DONT_PUSH_CHANGE_TO_BLOCKCHAIN:
             print(
                 f"{addr}: CANNOT PUSH CHANGES TO BLOCKCHAIN since the documents are not in order.\n Dequing the Request")
@@ -74,6 +87,11 @@ Hospitals_Sockets = []  # to store all the connections in the array
 block_data = dict()
 
 conn_data = dict()  # GLobal dictionary to store all the blocks that need to be varified, key == the client hospital used for verification
+
+fn = ''
+ln = ''
+age = ''
+x = 0
 
 
 def start():
