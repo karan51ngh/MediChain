@@ -48,10 +48,23 @@ will use **PoS (Proof of Stake) consensus (A Modified Version)** to verify the i
 - ![Network Architecture](https://github.com/karan51ngh/MediChain/blob/main/images/networkArchitecture.png)
 - There exists one Government Node.
 - All the other Nodes are Hospital Nodes.
--Information transfer can only occur between Government Node and Hospital Nodes
-- Each Hospital Node has equal voting pow
+-Information transfer can only occur between Government Node and Hospital Nodes.
+- Each Hospital Node has equal voting power.
 
 ### Node-Level Architecture
 - ![Node Architecture](https://github.com/karan51ngh/MediChain/blob/main/images/nodeArchitecture.png)
-- Government Node connects with all the Hospital Nodes
-- Hospital Nodes have access to their copy of the database
+- Government Node connects with all the Hospital Nodes.
+- Hospital Nodes have access to their copy of the database.
+
+## How to use this project:
+1. Initiate a Government Node by running the following command in an insance of a terminal. This terminal instance emulates a Government Node. 
+```
+ python government.py
+```
+2. Initiate Several Instances of Hospital Nodes by running the following command in several instances of the terminal. These instances will act as Hospital Nodes.
+```
+python hospital.py
+```
+3. Sample Output:
+
+![Govt-Hosp-Init](https://github.com/karan51ngh/MediChain/blob/main/images/govtHospInit.png)
