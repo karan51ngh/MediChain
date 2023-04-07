@@ -1,6 +1,5 @@
 # MediChain
-A Consortium Blockchain for maintaining Patient Details across all private and public health facilities of a country.
-(Application Of Blockchain in Healthcare)
+MediChain is a Consortium Blockchain for Seamless Patient Information Management in National Healthcare
 
 ## Abstract
 A blockchain network can be used to connect hospitals, diagnostic labs, drug companies, and doctors, allowing them to securely access and update patient medical records in real time. This decentralized approach not only improves the efficiency and security of data exchange but also ensures the authenticity and integrity of the data through the use of tamper-evident, immutable audit trails.
@@ -26,8 +25,19 @@ promote trust and transparency within the healthcare system.
 nodes. 
 - Each hospital would act as a node on the network and would be responsible for securely
 storing and updating the medical records of its patients. 
+- Everytime a patient undergoes a diagnosis, the hospital has to make a new transaction in the blockchain to add the details of that particular diagnosis. 
 
+## Consensus Mechanism
+- We will use a **custom** version of **Proof of Stake (PoS)**. We believe because there is no
+direct monetary incentive in a healthcare blockchain, we can compromise a certain
+degree of security for speed.
+- Whenever a certain patient is diagnosed at a certain hospital, 2 random hospitals from the
+network will validate the diagnosis. If the diagnosis is found to be accurate by both
+hospitals, then a new block will be added to the blockchain, implying that the diagnosis information is correct.
+- The hospitals will be chosen at random, which means that every hospital, no matter how
+big or small in operation, will have an equal stake, and hence an equal probability of bieng chosen for validating the records. Again this is possible based on the premise that a healthcare blockchain doesn’t have any direct monetary incentive.
 
+**Note**: *For implementation and testing ease, I have set the algorithm in the code to choose only 1 hospital.*
 ## Architecture Explained Briefly
 The implementation details of our blockchain system:
 1. The **government** will have a node on the blockchain, which will allow it to govern the
@@ -57,14 +67,23 @@ will use **PoS (Proof of Stake) consensus (A Modified Version)** to verify the i
 - Hospital Nodes have access to their copy of the database.
 
 ## How to use this project:
-1. Initiate a Government Node by running the following command in an insance of a terminal. This terminal instance emulates a Government Node. 
+1. If you have not initialized the blockchain and are running it for the first time, move to database directory and run the database_init.py file.
+```
+cd database
+python database_init.py
+```
+2. Initiate a Government Node by running the following command in an insance of a terminal. This terminal instance emulates a Government Node. 
 ```
  python government.py
 ```
-2. Initiate Several Instances of Hospital Nodes by running the following command in several instances of the terminal. These instances will act as Hospital Nodes.
+3. Initiate Several Instances of Hospital Nodes by running the following command in several instances of the terminal. These instances will act as Hospital Nodes.
 ```
 python hospital.py
 ```
-3. Sample Output:
-
-![Govt-Hosp-Init](https://github.com/karan51ngh/MediChain/blob/main/images/govtHospInit.png)
+4. Select an option for all the Hospital Nodes if you want them to participate. Choosing Idle implies that a hospital Node is available for validating transactions. Where as Choosing option to add patient data would imply that the hospital intends to make a transaction.
+5. Now the Blockchain will randomly choose an idle hospital and based on whether that particular hospital validates the diagnosis or not, the blockchain will start mining or cancel the transaction.
+6. To view the blockchain, move to database directory and run the database_view.py file.
+```
+cd database
+python database_view.py
+```
