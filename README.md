@@ -1,24 +1,6 @@
 # MediChain
 MediChain is a Consortium Blockchain for Seamless Patient Information Management in National Healthcare
 
-## Abstract
-A blockchain network can be used to connect hospitals, diagnostic labs, drug companies, and doctors, allowing them to securely access and update patient medical records in real time. This decentralized approach not only improves the efficiency and security of data exchange but also ensures the authenticity and integrity of the data through the use of tamper-evident, immutable audit trails.
-
-One potential benefit of using blockchain in the healthcare system is the ability for doctors to
-quickly and securely access a patient's medical history in emergency situations. This can greatly
-impact the quality of care provided to the patient, as timely access to comprehensive medical
-information can inform treatment decisions.
-
-Another benefit of using a decentralized approach is that it prevents any one entity from
-controlling or restricting access to patient data. This ensures that authorized healthcare providers
-can easily and securely access the information they need to provide the best possible care to
-patients.
-
-Additionally, implementing a blockchain-based system for storing and sharing medical data can
-improve patient privacy and security. By giving patients control over their personal medical
-information, and preventing the sale of this data to third parties, blockchain technology can help
-promote trust and transparency within the healthcare system.
-
 ## Overview
 - To implement a blockchain-based system, called **MediChain** for maintaining the medical records of all patients in a country. 
 - We would need to design a distributed database that is composed of interconnected
@@ -28,16 +10,8 @@ storing and updating the medical records of its patients.
 - Everytime a patient undergoes a diagnosis, the hospital has to make a new transaction in the blockchain to add the details of that particular diagnosis. 
 
 ## Consensus Mechanism
-- We will use a **custom** version of **Proof of Stake (PoS)**. We believe because there is no
-direct monetary incentive in a healthcare blockchain, we can compromise a certain
-degree of security for speed.
-- Whenever a certain patient is diagnosed at a certain hospital, 2 random hospitals from the
-network will validate the diagnosis. If the diagnosis is found to be accurate by both
-hospitals, then a new block will be added to the blockchain, implying that the diagnosis information is correct.
-- The hospitals will be chosen at random, which means that every hospital, no matter how
-big or small in operation, will have an equal stake, and hence an equal probability of bieng chosen for validating the records. Again this is possible based on the premise that a healthcare blockchain doesn’t have any direct monetary incentive.
+- We will use a **custom** version of **Proof of Stake (PoS)**.
 
-**Note**: *For implementation and testing ease, I have set the algorithm in the code to choose only 1 hospital.*
 ## Architecture Explained Briefly
 The implementation details of our blockchain system:
 1. The **government** will have a node on the blockchain, which will allow it to govern the
