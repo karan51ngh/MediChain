@@ -1,5 +1,9 @@
 # MediChain
-MediChain is a Consortium Blockchain for Seamless Patient Information Management in National Healthcare
+This repository is a proof-of-concept (POC) implementation of our paper titled: **"Proof-of-Trust-in-Expertise (PoTE): A Consensus Mechanism for Healthcare based Consortium Blockchains"**.
+
+Paper Link: https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4804243
+
+**MediChain** is a Consortium Blockchain for Seamless Patient Information Management in National Healthcare.
 
 ## Overview
 - To implement a blockchain-based system, called **MediChain** for maintaining the medical records of all patients in a country. 
@@ -10,7 +14,7 @@ storing and updating the medical records of its patients.
 - Everytime a patient undergoes a diagnosis, the hospital has to make a new transaction in the blockchain to add the details of that particular diagnosis. 
 
 ## Consensus Mechanism
-- We will use a **custom** version of **Proof of Stake (PoS)**.
+- We will use a **customised** version of **Proof of Stake (PoS)** to mimic **Proof-of-Trust-in-Expertise (PoTE)**.
 
 ## Architecture Explained Briefly
 The implementation details of our blockchain system:
